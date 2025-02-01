@@ -51,7 +51,7 @@ public class AuthServiceImpl implements AuthService {
 
     profile.setUser(user);
 
-    userDataService.saveUser(user);
+    userDataService.save(user);
   }
 
   @Override

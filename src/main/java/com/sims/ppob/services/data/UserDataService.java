@@ -6,5 +6,6 @@ import java.util.Optional;
 
 public interface UserDataService {
   Optional<User> findByEmail(String email);
-  void saveUser(User user);
+
+  void save(User user);
 }

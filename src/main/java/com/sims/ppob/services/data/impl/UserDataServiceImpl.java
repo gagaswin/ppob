@@ -19,7 +19,7 @@ public class UserDataServiceImpl implements UserDataService {
   }
 
   @Override
-  public void saveUser(User user) {
+  public void save(User user) {
     this.userRepository.save(user);
   }
 }
