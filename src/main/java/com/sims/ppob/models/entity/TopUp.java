@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.math.BigInteger;
 import java.time.LocalDateTime;
 
 @Entity
@@ -22,7 +21,7 @@ public class TopUp {
   private String id;
 
   @Column(name = "amount")
-  private BigInteger amount;
+  private Long amount;
 
   @Column(name = "created_at")
   private LocalDateTime createdAt = LocalDateTime.now();

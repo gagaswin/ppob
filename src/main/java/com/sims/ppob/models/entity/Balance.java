@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.math.BigInteger;
 import java.time.LocalDateTime;
 
 @Entity
@@ -22,7 +21,7 @@ public class Balance {
   private String id;
 
   @Column(name = "current_balance")
-  private BigInteger currentBalance;
+  private Long currentBalance;
 
   @Column(name = "updated_at")
   private LocalDateTime updatedAt = LocalDateTime.now();

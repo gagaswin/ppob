@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.math.BigInteger;
 import java.util.List;
 
 @Entity
@@ -31,7 +30,7 @@ public class Service {
   private String icon;
 
   @Column(name = "price", nullable = false)
-  private BigInteger price;
+  private Long price;
 
   // RELATION
   @OneToMany(mappedBy = "service")

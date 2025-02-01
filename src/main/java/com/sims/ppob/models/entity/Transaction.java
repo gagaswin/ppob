@@ -7,7 +7,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.math.BigInteger;
 import java.time.LocalDateTime;
 
 @Entity
@@ -26,7 +25,7 @@ public class Transaction {
   private String invoice;
 
   @Column(name = "amount", nullable = false)
-  private BigInteger amount;
+  private Long amount;
 
   @Enumerated(EnumType.STRING)
   @Column(name = "type", nullable = false)
