@@ -1,18 +1,17 @@
 package com.sims.ppob.models.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Setter
 @Builder
 @Table(name = "users")
 public class User {
@@ -34,9 +33,12 @@ public class User {
   @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
   private Profile profile;
 
-  @OneToMany(mappedBy = "user")
-  private List<TopUp> topUps;
+  @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  private Balance balance;
 
   @OneToMany(mappedBy = "user")
-  private List<Transaction> transactions;
+  private List<TopUp> topUps = new ArrayList<>();
+
+  @OneToMany(mappedBy = "user")
+  private List<Transaction> transactions = new ArrayList<>();
 }

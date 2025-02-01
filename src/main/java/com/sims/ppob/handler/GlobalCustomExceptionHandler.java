@@ -1,5 +1,6 @@
 package com.sims.ppob.handler;
 
+import com.sims.ppob.exceptions.BalanceException;
 import com.sims.ppob.exceptions.ResourceNotFoundException;
 import com.sims.ppob.exceptions.UserAlreadyExistsException;
 import com.sims.ppob.models.dtos.CommonResponseDto;
@@ -18,8 +19,14 @@ public class GlobalCustomExceptionHandler {
   }
 
   @ExceptionHandler(exception = ResourceNotFoundException.class)
-  public ResponseEntity<CommonResponseDto<String>> handleAgendaNotFoundException(ResourceNotFoundException e) {
+  public ResponseEntity<CommonResponseDto<String>> handleResourceNotFoundException(ResourceNotFoundException e) {
     return ResponseEntity.status(HttpStatus.NOT_FOUND)
         .body(ResponseUtil.createResponse(HttpStatus.NOT_FOUND.value(), e.getMessage()));
+  }
+
+  @ExceptionHandler(exception = BalanceException.class)
+  public ResponseEntity<CommonResponseDto<String>> handleBalanceException(BalanceException e) {
+    return ResponseEntity.status(HttpStatus.NOT_FOUND)
+        .body(ResponseUtil.createResponse(HttpStatus.BAD_REQUEST.value(), e.getMessage()));
   }
 }

@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,7 +21,7 @@ public class ServiceSims {
   @Column(name = "id", nullable = false)
   private String id;
 
-  @Column(name = "code", nullable = false)
+  @Column(name = "code", unique = true, nullable = false)
   private String code;
 
   @Column(name = "name", nullable = false)
@@ -34,5 +35,5 @@ public class ServiceSims {
 
   // RELATION
   @OneToMany(mappedBy = "serviceSims")
-  private List<Transaction> transactions;
+  private List<Transaction> transactions = new ArrayList<>();
 }

@@ -5,6 +5,7 @@ import com.sims.ppob.models.dtos.auth.LoginUserRequestDto;
 import com.sims.ppob.models.dtos.auth.LoginUserResponseDto;
 import com.sims.ppob.models.dtos.auth.RegisterUserRequestDto;
 import com.sims.ppob.models.entity.AppUser;
+import com.sims.ppob.models.entity.Balance;
 import com.sims.ppob.models.entity.Profile;
 import com.sims.ppob.models.entity.User;
 import com.sims.ppob.services.AuthService;
@@ -17,6 +18,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
@@ -51,6 +53,13 @@ public class AuthServiceImpl implements AuthService {
 
     profile.setUser(user);
 
+    Balance initializeBalance = Balance.builder()
+        .currentBalance(0L)
+        .updatedAt(now)
+        .user(user)
+        .build();
+
+    user.setBalance(initializeBalance);
     userDataService.save(user);
   }
 

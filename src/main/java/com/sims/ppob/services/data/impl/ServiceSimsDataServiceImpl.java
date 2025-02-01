@@ -19,4 +19,14 @@ public class ServiceSimsDataServiceImpl implements ServiceSimsDataService {
     List<ServiceSims> serviceSims = this.serviceSimsRepository.findAll();
     return serviceSims.isEmpty() ? Optional.empty() : Optional.of(serviceSims);
   }
+
+  @Override
+  public Optional<ServiceSims> findByCode(String serviceCode) {
+    return serviceSimsRepository.findByCode(serviceCode);
+  }
+
+  @Override
+  public Optional<ServiceSims> findById(String id) {
+    return this.serviceSimsRepository.findById(id);
+  }
 }

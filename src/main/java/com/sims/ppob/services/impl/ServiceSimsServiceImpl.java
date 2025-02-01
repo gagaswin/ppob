@@ -1,9 +1,7 @@
 package com.sims.ppob.services.impl;
 
-import com.sims.ppob.models.dtos.banner.BannerResponseDto;
 import com.sims.ppob.models.dtos.service.ServiceSimsResponseDto;
 import com.sims.ppob.models.entity.ServiceSims;
-import com.sims.ppob.models.entity.User;
 import com.sims.ppob.services.ServiceSimsService;
 import com.sims.ppob.services.UserService;
 import com.sims.ppob.services.data.ServiceSimsDataService;
@@ -20,6 +18,14 @@ import java.util.stream.Collectors;
 public class ServiceSimsServiceImpl implements ServiceSimsService {
   private final ServiceSimsDataService serviceSimsDataService;
   private final UserService userService;
+
+  @Override
+  public String getServiceNameById(String serviceId) {
+    ServiceSims serviceSims = this.serviceSimsDataService.findById(serviceId)
+        .orElseThrow(() -> new RuntimeException("Service tidak ditemukan"));
+
+    return serviceSims.getName();
+  }
 
   @Override
   public List<ServiceSimsResponseDto> getAll(Authentication authentication) {
