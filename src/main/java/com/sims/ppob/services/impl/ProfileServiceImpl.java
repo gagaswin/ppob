@@ -25,9 +25,9 @@ public class ProfileServiceImpl implements ProfileService {
 
     return ProfileResponseDto.builder()
         .email(currentUser.getEmail())
-        .firstName(currentUser.getProfile().getFirstName())
-        .lastName(currentUser.getProfile().getLastName())
-        .profileImage(currentUser.getProfile().getProfileImage())
+        .first_name(currentUser.getProfile().getFirstName())
+        .last_name(currentUser.getProfile().getLastName())
+        .profile_image(currentUser.getProfile().getProfileImage())
         .build();
   }
 
@@ -36,17 +36,17 @@ public class ProfileServiceImpl implements ProfileService {
     User currentUser = this.userService.getUserAuth(authentication);
 
     Profile currentProfile = currentUser.getProfile();
-    currentProfile.setFirstName(updateProfileRequestDto.getFirstName());
-    currentProfile.setLastName(updateProfileRequestDto.getLastName());
+    currentProfile.setFirstName(updateProfileRequestDto.getFirst_name());
+    currentProfile.setLastName(updateProfileRequestDto.getLast_name());
     currentProfile.setUpdatedAt(LocalDateTime.now());
 
     Profile updatedProfile = this.profileDataService.save(currentProfile);
 
     return ProfileResponseDto.builder()
         .email(currentUser.getEmail())
-        .firstName(updatedProfile.getFirstName())
-        .lastName(updatedProfile.getLastName())
-        .profileImage(currentUser.getProfile().getProfileImage())
+        .first_name(updatedProfile.getFirstName())
+        .last_name(updatedProfile.getLastName())
+        .profile_image(currentUser.getProfile().getProfileImage())
         .build();
   }
 }

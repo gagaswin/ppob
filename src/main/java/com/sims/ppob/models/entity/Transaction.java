@@ -41,5 +41,5 @@ public class Transaction {
 
   @ManyToOne
   @JoinColumn(name = "service_id", nullable = false)
-  private Service service;
+  private ServiceSims serviceSims;
 }

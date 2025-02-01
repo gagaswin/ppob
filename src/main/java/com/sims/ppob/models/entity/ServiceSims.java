@@ -14,7 +14,7 @@ import java.util.List;
 @Getter
 @Builder
 @Table(name = "service")
-public class Service {
+public class ServiceSims {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
   @Column(name = "id", nullable = false)
@@ -33,6 +33,6 @@ public class Service {
   private Long price;
 
   // RELATION
-  @OneToMany(mappedBy = "service")
+  @OneToMany(mappedBy = "serviceSims")
   private List<Transaction> transactions;
 }

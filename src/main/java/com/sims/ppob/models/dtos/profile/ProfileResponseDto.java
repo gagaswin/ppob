@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ProfileResponseDto {
   private String email;
-  private String firstName;
-  private String lastName;
-  private String profileImage;
+  private String first_name;
+  private String last_name;
+  private String profile_image;
 }

@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UpdateProfileRequestDto {
-  private String firstName;
-  private String lastName;
+  private String first_name;
+  private String last_name;
 }

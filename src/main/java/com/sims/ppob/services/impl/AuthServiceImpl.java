@@ -37,8 +37,8 @@ public class AuthServiceImpl implements AuthService {
     LocalDateTime now = LocalDateTime.now();
 
     Profile profile = Profile.builder()
-        .firstName(registerUserRequestDto.getFirstName())
-        .lastName(registerUserRequestDto.getLastName())
+        .firstName(registerUserRequestDto.getFirst_name())
+        .lastName(registerUserRequestDto.getLast_name())
         .updatedAt(now)
         .build();
 
