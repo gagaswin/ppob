@@ -10,7 +10,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,16 +29,16 @@ public class ServiceSimsServiceImpl implements ServiceSimsService {
   @Override
   public List<ServiceSimsResponseDto> getAll(Authentication authentication) {
     this.userService.getUserAuth(authentication);
-    Optional<List<ServiceSims>> listServiceSims = this.serviceSimsDataService.findAll();
 
-    return listServiceSims.map(list -> list.stream()
-            .map(serviceSims -> ServiceSimsResponseDto.builder()
-                .service_code(serviceSims.getCode())
-                .service_name(serviceSims.getName())
-                .service_icon(serviceSims.getIcon())
-                .service_tarif(serviceSims.getPrice())
-                .build())
-            .collect(Collectors.toList()))
-        .orElseGet(List::of);
+    List<ServiceSims> listServiceSims = this.serviceSimsDataService.findAll();
+
+    return listServiceSims.stream()
+        .map(serviceSims -> ServiceSimsResponseDto.builder()
+            .service_code(serviceSims.getCode())
+            .service_name(serviceSims.getName())
+            .service_icon(serviceSims.getIcon())
+            .service_tarif(serviceSims.getPrice())
+            .build())
+        .collect(Collectors.toList());
   }
 }

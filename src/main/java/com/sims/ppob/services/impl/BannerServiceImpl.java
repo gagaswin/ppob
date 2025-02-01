@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -18,15 +17,14 @@ public class BannerServiceImpl implements BannerService {
 
   @Override
   public List<BannerResponseDto> getAll() {
-    Optional<List<Banner>> banners = bannerDataService.findAll();
+    List<Banner> banners = bannerDataService.findAll();
 
-    return banners.map(list -> list.stream()
-            .map(banner -> BannerResponseDto.builder()
-                .banner_name(banner.getTitle())
-                .banner_image(banner.getImageUrl())
-                .description(banner.getDescription())
-                .build())
-            .collect(Collectors.toList()))
-        .orElseGet(List::of);
+    return banners.stream()
+        .map(banner -> BannerResponseDto.builder()
+            .banner_name(banner.getTitle())
+            .banner_image(banner.getImageUrl())
+            .description(banner.getDescription())
+            .build())
+        .collect(Collectors.toList());
   }
 }
