@@ -39,8 +39,9 @@ public class TransactionServiceImpl implements TransactionService {
 
   @Override
   public List<Transaction> findByUserWithPagination(User user, Integer offset, Integer limit) {
-    Pageable pageable = PageRequest.of(offset, limit, Sort.by(Sort.Direction.DESC, "createdAt"));
+    Pageable pageable = PageRequest.of(offset, limit);
     Page<Transaction> transactionPage = this.transactionDataService.findByUser(user, pageable);
+
     return transactionPage.getContent();
   }
 

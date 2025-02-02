@@ -18,7 +18,7 @@ public class TransactionDataServiceImpl implements TransactionDataService {
 
   @Override
   public Page<Transaction> findByUser(User user, Pageable pageable) {
-    return this.transactionRepository.findByUser(user, pageable);
+    return this.transactionRepository.findByUser(user.getId(), pageable);
   }
 
   @Override
@@ -33,6 +33,6 @@ public class TransactionDataServiceImpl implements TransactionDataService {
 
   @Override
   public List<Transaction> findAllByUserOrderByCreatedAtDesc(User user) {
-    return this.transactionRepository.findAllByUserOrderByCreatedAtDesc(user);
+    return this.transactionRepository.findAllByUserOrderByCreatedAtDesc(user.getId());
   }
 }

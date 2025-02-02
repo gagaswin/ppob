@@ -14,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Builder
-@Table(name = "service")
+@Table(name = "service_sims")
 public class ServiceSims {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)

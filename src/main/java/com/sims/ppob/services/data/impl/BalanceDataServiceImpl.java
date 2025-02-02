@@ -16,7 +16,7 @@ public class BalanceDataServiceImpl implements BalanceDataService {
 
   @Override
   public Optional<Balance> findByUser(User user) {
-    return balanceRepository.findByUser(user);
+    return this.balanceRepository.findByUser(user.getId());
   }
 
   @Override
